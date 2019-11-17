@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 
 import BowlInformation from './BowlInformation';
+import BowlSelection from './BowlSelection';
 import TeamDisplay from './TeamDisplay';
 import apiCall from './apicall';
 
@@ -41,24 +42,7 @@ const SelectionScreen = () => {
     return (
         <div>
             <h1>Pick Your Winners</h1>
-            {bowls.map(bowlGame => {
-                const {id, details, homeTeam, awayTeam} = bowlGame;
-
-                return (
-                    <BowlSelectionContainer key={id}>
-                        <BowlSelectionItem>
-                            <TeamDisplay team={awayTeam} onLeft={true} />
-                        </BowlSelectionItem>
-                        <BowlSelectionItem>
-                            <BowlInformation bowl={details} />
-                        </BowlSelectionItem>
-                        <BowlSelectionItem>
-                            <TeamDisplay team={homeTeam} onLeft={false} />
-                        </BowlSelectionItem>
-                    </BowlSelectionContainer>
-    
-                )
-            })}
+            {bowls.map(bowlGame => <BowlSelection bowlGame={bowlGame} key={bowlGame.id}/> )}
         </div>
     )
 }

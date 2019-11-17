@@ -22,20 +22,20 @@ const TeamDisplayContainer = styled.div`
 
 const Logo = styled.div`
     border-top: 1px #eee solid;
-    order: ${props => props.order ? props.order : 0};
+    order: ${props => props.order || 0};
     width: 100%;
 `;
 
 const Details = styled.div`
-    order: ${props => props.order ? props.order : 0};
+    order: ${props => props.order || 0};
     width: 100%;
 `;
 
-const TeamDisplay = ({team, onLeft }) => {
+const TeamDisplay = ({team, onLeft, selected}) => {
     const {name, mascot, record, imgUrl} = team;
 
-    const logoOrder = onLeft ? 0 : 1;
-    const detailsOrder = onLeft ? 1 : 0;
+    const logoOrder = onLeft ? 0 : 2;
+    const detailsOrder = onLeft ? 2 : 0;
 
     return (
         <TeamDisplayContainer>
@@ -44,6 +44,9 @@ const TeamDisplay = ({team, onLeft }) => {
                 <Mascot>{mascot}</Mascot>
                 <p>{record}</p>
             </Details>
+            <div style={{'width': '100%', 'order': 1}}>
+                {selected && <span>&#10003;</span>}
+            </div>
             <Logo order={logoOrder} >
                 <img src={imgUrl} alt={name} width={100} height={100}/>
             </Logo>
