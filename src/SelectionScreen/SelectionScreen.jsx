@@ -47,13 +47,13 @@ const SelectionScreen = () => {
                 return (
                     <BowlSelectionContainer key={id}>
                         <BowlSelectionItem>
-                            <TeamDisplay team={awayTeam} />
+                            <TeamDisplay team={awayTeam} onLeft={true} />
                         </BowlSelectionItem>
                         <BowlSelectionItem>
                             <BowlInformation bowl={details} />
                         </BowlSelectionItem>
                         <BowlSelectionItem>
-                            <TeamDisplay team={homeTeam} />
+                            <TeamDisplay team={homeTeam} onLeft={false} />
                         </BowlSelectionItem>
                     </BowlSelectionContainer>
     
