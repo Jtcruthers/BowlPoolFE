@@ -6,14 +6,14 @@ const TeamName = styled.h3`
 `;
 
 const TeamPicker = ({team}) => {
-    const {name, mascot, record, url} = team;
+    const {name, mascot, record, imgUrl} = team;
 
     return (
         <div>
             <TeamName>{name}</TeamName>
             <p>{mascot}</p>
             <p>{record}</p>
-            <img src={url} alt={name} width={40} height={40}/>
+            <img src={imgUrl} alt={name} width={100} height={100}/>
         </div>
     )
 

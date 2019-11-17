@@ -11,13 +11,13 @@
             "name": "Ohio State",
             "mascot": "Buckeyes",
             "record": "12-0",
-            "imgUrl": "https://drone-part-picker-jtcruthers.s3.amazonaws.com/ohio_state.png"
+            "imgUrl": "https://s3.amazonaws.com/drone-part-picker-jtcruthers/ohio_state.png"
         },
         "awayTeam": {
             "name": "Michigan",
             "mascot": "Wolverines",
             "record": "0-12",
-            "imgUrl": "https://drone-part-picker-jtcruthers.s3.amazonaws.com/michigan.png"
+            "imgUrl": "https://s3.amazonaws.com/drone-part-picker-jtcruthers/michigan.png"
         }
     },
     {
@@ -32,13 +32,13 @@
             "name": "LSU",
             "mascot": "Tigers",
             "record": "12-0",
-            "imgUrl": "https://drone-part-picker-jtcruthers.s3.amazonaws.com/ohio_state.png"
+            "imgUrl": "https://s3.amazonaws.com/drone-part-picker-jtcruthers/lsu.png"
         },
         "awayTeam": {
             "name": "Georgia",
             "mascot": "Bulldogs",
             "record": "0-12",
-            "imgUrl": "https://drone-part-picker-jtcruthers.s3.amazonaws.com/michigan.png"
+            "imgUrl": "https://s3.amazonaws.com/drone-part-picker-jtcruthers/georgia.png"
         }
     }
 ]
