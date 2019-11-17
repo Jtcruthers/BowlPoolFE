@@ -1,24 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 
-import BowlInformation from './BowlInformation';
 import BowlSelection from './BowlSelection';
-import TeamDisplay from './TeamDisplay';
+import StyledButton from '../components/StyledButton';
 import apiCall from './apicall';
-
-const BowlSelectionItem = styled.div`
-    width: 100%;
-    min-height: 100%;
-`;
-
-const BowlSelectionContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    width: 80%;
-    align-items: center;
-    justify-content: center;
-    margin: 20px 10%;
-`;
 
 const mockAPICall = () => {
     return new Promise((resolve) => {
@@ -54,6 +39,7 @@ const SelectionScreen = () => {
                     key={bowlGame.id}
                 />
             )}
+            <StyledButton>Save</StyledButton>
         </div>
     )
 }
