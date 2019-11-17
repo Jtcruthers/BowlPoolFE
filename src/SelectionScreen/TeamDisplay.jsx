@@ -35,7 +35,7 @@ const Details = styled.div`
 
 const SelectedIndicator = styled.div`
     margin-top: 10px;
-    width: 100%;
+    width: 60%;
     order: 1;
     font-size: 4rem;
 `;

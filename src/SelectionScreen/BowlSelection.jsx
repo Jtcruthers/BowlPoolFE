@@ -12,10 +12,8 @@ const BowlSelectionItem = styled.div`
 const BowlSelectionContainer = styled.div`
     display: flex;
     flex-direction: row;
-    width: 80%;
     align-items: center;
     justify-content: center;
-    margin: 20px 10%;
 `;
 
 const BowlSelection = ({bowlGame, selectedTeam, onSelectTeam}) => {
