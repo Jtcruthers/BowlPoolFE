@@ -1,0 +1,42 @@
+[
+    {
+        "details": {
+            "name": "B1G Championship",
+            "location": "Indianapolis, IN",
+            "time": "19:30",
+            "date": "December 7th, 2019"
+        },
+        "homeTeam": {
+            "name": "Ohio State",
+            "mascot": "Buckeyes",
+            "record": "12-0",
+            "imgUrl": "https://drone-part-picker-jtcruthers.s3.amazonaws.com/ohio_state.png"
+        },
+        "awayTeam": {
+            "name": "Michigan",
+            "mascot": "Wolverines",
+            "record": "0-12",
+            "imgUrl": "https://drone-part-picker-jtcruthers.s3.amazonaws.com/michigan.png"
+        }
+    },
+    {
+        "details": {
+            "name": "SEC Championship",
+            "location": "Atlanta, GA",
+            "time": "19:30",
+            "date": "December 7th, 2019"
+        },
+        "homeTeam": {
+            "name": "LSU",
+            "mascot": "Tigers",
+            "record": "12-0",
+            "imgUrl": "https://drone-part-picker-jtcruthers.s3.amazonaws.com/ohio_state.png"
+        },
+        "awayTeam": {
+            "name": "Georgia",
+            "mascot": "Bulldogs",
+            "record": "0-12",
+            "imgUrl": "https://drone-part-picker-jtcruthers.s3.amazonaws.com/michigan.png"
+        }
+    }
+]
