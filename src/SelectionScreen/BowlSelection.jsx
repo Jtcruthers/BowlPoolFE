@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import BowlInformation from './BowlInformation';
@@ -18,36 +18,26 @@ const BowlSelectionContainer = styled.div`
     margin: 20px 10%;
 `;
 
-const BowlSelection = ({bowlGame}) => {
+const BowlSelection = ({bowlGame, selectedTeam, onSelectTeam}) => {
     const {id, details, homeTeam, awayTeam} = bowlGame;
-
-    const [selection, setSelection] = useState(null);
-
-    const pickTeam = (team) => {
-        if (team === selection) {
-            setSelection(null);
-        } else {
-            setSelection(team);
-        }
-    };
 
     return (
         <BowlSelectionContainer key={id}>
-            <BowlSelectionItem onClick={() => pickTeam('away')}>
+            <BowlSelectionItem onClick={() => onSelectTeam('away')}>
                 <TeamDisplay
                     team={awayTeam}
                     onLeft={true}
-                    selected={selection === 'away' ? true : false}
+                    selected={selectedTeam === 'away' ? true : false}
                 />
             </BowlSelectionItem>
             <BowlSelectionItem>
                 <BowlInformation bowl={details} />
             </BowlSelectionItem>
-            <BowlSelectionItem onClick={() => pickTeam('home')}>
+            <BowlSelectionItem onClick={() => onSelectTeam('home')}>
                 <TeamDisplay
                     team={homeTeam}
                     onLeft={false}
-                    selected={selection === 'home' ? true : false}
+                    selected={selectedTeam === 'home' ? true : false}
                 />
             </BowlSelectionItem>
         </BowlSelectionContainer>

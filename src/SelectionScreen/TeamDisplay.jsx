@@ -6,8 +6,8 @@ const TeamName = styled.h3`
     margin: 10px 0 0 0;
 `;
 
-const Mascot = styled.div`
-    margin: 0;
+const DetailLine = styled.p`
+    margin: 0 0 20px 0;
     padding: 0;
 `;
 
@@ -18,9 +18,11 @@ const TeamDisplayContainer = styled.div`
     transition: 0.3s;
     border-radius: 5px;
     background-color: white;
+    justify-content: center;
 `;
 
 const Logo = styled.div`
+    margin-top: 10px;
     border-top: 1px #eee solid;
     order: ${props => props.order || 0};
     width: 100%;
@@ -29,6 +31,13 @@ const Logo = styled.div`
 const Details = styled.div`
     order: ${props => props.order || 0};
     width: 100%;
+`;
+
+const SelectedIndicator = styled.div`
+    margin-top: 10px;
+    width: 100%;
+    order: 1;
+    font-size: 4rem;
 `;
 
 const TeamDisplay = ({team, onLeft, selected}) => {
@@ -41,18 +50,17 @@ const TeamDisplay = ({team, onLeft, selected}) => {
         <TeamDisplayContainer>
             <Details order={detailsOrder} >
                 <TeamName>{name}</TeamName>
-                <Mascot>{mascot}</Mascot>
-                <p>{record}</p>
+                <DetailLine>{mascot}</DetailLine>
+                <DetailLine>{record}</DetailLine>
             </Details>
-            <div style={{'width': '100%', 'order': 1}}>
+            <SelectedIndicator style={{'width': '100%', 'order': 1}}>
                 {selected && <span>&#10003;</span>}
-            </div>
+            </SelectedIndicator>
             <Logo order={logoOrder} >
-                <img src={imgUrl} alt={name} width={100} height={100}/>
+                <img src={imgUrl} alt={name} width={90} height={90}/>
             </Logo>
         </TeamDisplayContainer>
     )
-
 }
 
 export default TeamDisplay;
