@@ -6,19 +6,23 @@ import TeamPicker from './TeamPicker';
 import apiCall from './apicall';
 
 const HomeTeamContainer = styled.div`
-    padding: 0 100px;
+    width: 100%;
+    height: 100%;
 `;
 
 const AwayTeamcontainer = styled.div`
-
+    width: 100%;
+    height: 100%;
 `;
 
-const TeamSelectionContainer = styled.div`
+const BowlSelectionContainer = styled.div`
     display: flex;
     flex-direction: row;
-    width: 50%;
+    width: 80%;
     align-items: center;
     justify-content: center;
+    border-bottom: 1px solid black;
+    margin: 0 10%;
 `;
 
 const mockAPICall = () => {
@@ -29,19 +33,25 @@ const mockAPICall = () => {
 
 const SelectionScreen = () => {
     const [bowls, setBowls] = useState([]);
+    const [selections, setSelections] = useState([]);
 
     useEffect(() => {
-        mockAPICall().then(bowls => setBowls(bowls));
+        mockAPICall().then(bowls => {
+            setBowls(bowls);
+            setSelections(new Array(bowls.length));
+        });
     }, []);
+
+    const pickTeam = () => {};
 
     return (
         <div>
             <h1>Pick Your Winners</h1>
             {bowls.map(bowlGame => {
-                const {details, homeTeam, awayTeam} = bowlGame;
+                const {id, details, homeTeam, awayTeam} = bowlGame;
 
                 return (
-                    <TeamSelectionContainer>
+                    <BowlSelectionContainer key={id}>
                         <AwayTeamcontainer>
                             <TeamPicker team={awayTeam} />
                         </AwayTeamcontainer>
@@ -49,7 +59,7 @@ const SelectionScreen = () => {
                         <HomeTeamContainer>
                             <TeamPicker team={homeTeam} />
                         </HomeTeamContainer>
-                    </TeamSelectionContainer>
+                    </BowlSelectionContainer>
     
                 )
             })}

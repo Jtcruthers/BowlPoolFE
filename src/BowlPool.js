@@ -1,12 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './BowlPool.css';
 
 import SelectionScreen from './SelectionScreen';
 
 function App() {
   return (
-    <div className="App">
+    <div className="BowlPool">
       <SelectionScreen />
     </div>
   );

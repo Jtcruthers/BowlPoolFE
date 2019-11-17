@@ -1,5 +1,6 @@
 [
     {
+        "id": 0,
         "details": {
             "name": "B1G Championship",
             "location": "Indianapolis, IN",
@@ -20,6 +21,7 @@
         }
     },
     {
+        "id": 1,
         "details": {
             "name": "SEC Championship",
             "location": "Atlanta, GA",
