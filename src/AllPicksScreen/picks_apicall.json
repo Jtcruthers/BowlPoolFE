@@ -1,0 +1,29 @@
+[
+    {
+        "id": 0,
+        "name": "Justin",
+        "picks": {
+            "0": "home",
+            "1": "home",
+            "2": "away"
+        }
+    },
+    {
+        "id": 1,
+        "name": "Big Cat",
+        "picks": {
+            "0": "home",
+            "1": "away",
+            "2": "home"
+        }
+    },
+    {
+        "id": 2,
+        "name": "Big D",
+        "picks": {
+            "0": "home",
+            "1": "home",
+            "2": "away"
+        }
+    }
+]

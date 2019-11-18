@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import {getImageUrlFromUri} from '../utils';
+
 const TeamName = styled.h3`
     font-size: 1rem;
     margin: 10px 0 0 0;
@@ -41,10 +43,11 @@ const SelectedIndicator = styled.div`
 `;
 
 const TeamDisplay = ({team, onLeft, selected}) => {
-    const {name, mascot, record, imgUrl} = team;
+    const {name, mascot, record, uri} = team;
 
     const logoOrder = onLeft ? 0 : 2;
     const detailsOrder = onLeft ? 2 : 0;
+    const imageUrl = getImageUrlFromUri(uri);
 
     return (
         <TeamDisplayContainer>
@@ -57,7 +60,7 @@ const TeamDisplay = ({team, onLeft, selected}) => {
                 {selected && <span>&#10003;</span>}
             </SelectedIndicator>
             <Logo order={logoOrder} >
-                <img src={imgUrl} alt={name} width={90} height={90}/>
+                <img src={imageUrl} alt={name} width={90} height={90}/>
             </Logo>
         </TeamDisplayContainer>
     )
