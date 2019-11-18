@@ -7,7 +7,7 @@ import SelectionScreen from './SelectionScreen';
 function App() {
   return (
     <div className="BowlPool">
-      <AllPicksScreen />
+      <SelectionScreen />
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import styled from 'styled-components';
 
 import picksApiCall from './picks_apicall';
 import bowlApiCall from './bowlgames_apicall';
@@ -18,7 +17,6 @@ const mockPicksCall = () => {
         setTimeout(() => {resolve(picksApiCall)}, 0);
     });
 }
-
 
 const getPicksForGame = (id, bowlPicks) => {
     return bowlPicks.map(person => person.picks).map(picks => picks[id]);
