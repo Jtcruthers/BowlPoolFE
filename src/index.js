@@ -4,7 +4,24 @@ import './index.css';
 import BowlPool from './BowlPool';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<BowlPool />, document.getElementById('root'));
+import { Provider as AlertProvider } from 'react-alert'
+import AlertTemplate from 'react-alert-template-basic';
+
+// optional cofiguration
+const options = {
+    position: 'bottom center',
+    timeout: 3000,
+    offset: '30px',
+    transition: 'scale'
+  }
+
+const Root = () => (
+    <AlertProvider template={AlertTemplate} {...options}>
+        <BowlPool />
+    </AlertProvider>
+)
+
+ReactDOM.render(<Root />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

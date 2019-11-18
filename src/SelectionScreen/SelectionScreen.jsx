@@ -9,7 +9,7 @@ const BowlSelectionContainer = styled.div`
     margin: 30px 10%;
 `;
 
-const SelectionScreen = ({bowls, selections, pickTeam}) => (
+const SelectionScreen = ({bowls, selections, pickTeam, onSave}) => (
     <div>
         <h1>Pick Your Winners</h1>
         {bowls.map(bowlGame => 
@@ -21,7 +21,7 @@ const SelectionScreen = ({bowls, selections, pickTeam}) => (
                 />
             </BowlSelectionContainer>
         )}
-        <StyledButton>Save</StyledButton>
+        <StyledButton onClick={onSave}>Save</StyledButton>
     </div>
 )
 
