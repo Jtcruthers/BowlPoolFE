@@ -35,17 +35,26 @@ const SelectionScreenContainer = () => {
         }
     };
 
-    const savePicks = () => {
+    const savePicks = (event) => {
         const allTeamsPicked = !Object.keys(selections).some(id => selections[id] === null);
         console.log(allTeamsPicked);
         if (!allTeamsPicked) {
+            event.preventDefault();
             alert.error('You are missing teams');
         } else {
+            //Make api call to save picks and if fails, prevent default
             alert.success('Saved Picks');
         }
     }
 
-    return <SelectionScreen bowls={bowls} selections={selections} pickTeam={pickTeam} onSave={savePicks} />
+    return (
+        <SelectionScreen
+            bowls={bowls}
+            selections={selections}
+            pickTeam={pickTeam}
+            onSave={savePicks}
+        />
+    )
 }
 
 export default SelectionScreenContainer;

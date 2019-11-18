@@ -3,22 +3,25 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import BowlPool from './BowlPool';
 import * as serviceWorker from './serviceWorker';
+import {BrowserRouter as Router} from "react-router-dom";
+  
 
 import { Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic';
 
-// optional cofiguration
 const options = {
     position: 'bottom center',
     timeout: 3000,
     offset: '30px',
     transition: 'scale'
-  }
+}
 
 const Root = () => (
-    <AlertProvider template={AlertTemplate} {...options}>
-        <BowlPool />
-    </AlertProvider>
+    <Router>
+        <AlertProvider template={AlertTemplate} {...options}>
+            <BowlPool />
+        </AlertProvider>
+    </Router>
 )
 
 ReactDOM.render(<Root />, document.getElementById('root'));
