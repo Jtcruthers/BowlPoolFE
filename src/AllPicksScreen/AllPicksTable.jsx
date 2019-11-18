@@ -3,19 +3,23 @@ import styled from 'styled-components';
 
 
 
-const AllPicksTable = ({bowls, picks}) => {
+const AllPicksTable = ({bowls, picks, picksPerBowl}) => {
 
     return (
         <table>
             <thead>
                 <tr>
-                {picks.map(pick => <th>{pick.name}</th>)}
+                    <th>Matchup</th>
+                    {picks.map(pick => <th key={pick.id}>{pick.name}</th>)}
                 </tr>
             </thead>
             <tbody>
                 {bowls.map(bowl => (
-                    <tr>
-
+                    <tr key={bowl.id}>
+                        <td>{`${bowl.awayTeam.name} vs ${bowl.homeTeam.name}`}</td>
+                        {
+                            picksPerBowl[bowl.id].map((pick, index) => <td key={index}>{pick}</td>)
+                        }
                     </tr>
                 ))}
             </tbody>

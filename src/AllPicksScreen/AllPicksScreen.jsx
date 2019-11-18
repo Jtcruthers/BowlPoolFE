@@ -21,25 +21,28 @@ const mockPicksCall = () => {
 
 
 const getPicksForGame = (id, bowlPicks) => {
-    bowlPicks.map(person => person.picks).map(picks => picks[id]);
+    return bowlPicks.map(person => person.picks).map(picks => picks[id]);
 }
 
 const AllPicksScreen = () => {
     const [bowls, setBowls] = useState([]);
     const [picks, setPicks] = useState([]);
+    const [picksPerBowl, setPicksPerBowl] = useState({});
 
     useEffect(() => {
-        mockBowlCall().then(bowls => setBowls(bowls));
+        Promise.all([mockBowlCall(), mockPicksCall()]).then(([bowls, picks]) => {
+            const picksPerBowl = {};
+            bowls.map(bowl => bowl.id).forEach(id => picksPerBowl[id] = getPicksForGame(id, picks));
+            setPicksPerBowl(picksPerBowl);
+            setBowls(bowls);
+            setPicks(picks);
+        })
     }, []);
-
-    useEffect(() => {
-        mockPicksCall().then(picks => setPicks(picks));
-    })
 
     if (!bowls.length || !picks.length) {
         return <p>LOADING</p>;
     }
-    return <AllPicksTable bowls={bowls} picks={picks} />
+    return <AllPicksTable bowls={bowls} picks={picks} picksPerBowl={picksPerBowl} />
 }
 
 export default AllPicksScreen;
