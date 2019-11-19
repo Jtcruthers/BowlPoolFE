@@ -1,6 +1,12 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import {getImageUrlFromUri} from '../utils';
+
+const StyledRow = styled.tr`
+    border-bottom: 1px solid black;
+`;
+
 
 const Pick = ({bowl, pick}) => {
     const pickName = pick === 'home' ? bowl.homeTeam.name : bowl.awayTeam.name; 
@@ -15,12 +21,12 @@ const Pick = ({bowl, pick}) => {
 }
 
 const PicksRow = ({bowl, picksPerBowl}) => (
-    <tr>
+    <StyledRow>
         <td>{`${bowl.awayTeam.name} vs ${bowl.homeTeam.name}`}</td>
         {
             picksPerBowl[bowl.id].map((pick, index) => <Pick bowl={bowl} pick={pick} key={index} />)
         }
-    </tr>
+    </StyledRow>
 )
 
 export default PicksRow;

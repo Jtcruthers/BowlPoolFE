@@ -6,7 +6,8 @@ const NicknameLabel = styled.label`
     padding: 10px;
     background-color: white;
     width: 100%;
-    border-right: 1px solid black;
+    border-right: 1px solid #8E8D8A;
+    border: 1px solid #
     height: 41px;
     width: 25%;
 `;

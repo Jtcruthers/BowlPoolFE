@@ -10,10 +10,20 @@ const BowlSelectionContainer = styled.div`
     margin: 30px 10%;
 `;
 
+const NicknameInputContainer = styled.div`
+    margin: 3rem 0;
+`;
+
+const SelectionTitle = styled.h1`
+    margin-top: 2.5rem;
+`;
+
 const SelectionScreen = ({bowls, selections, nickname, pickTeam, onSave}) => (
     <div>
-        <h1>Pick Your Winners</h1>
-        <NicknameInput nickname={nickname.get} setNickname={nickname.set} />
+        <SelectionTitle>Pick Your Winners</SelectionTitle>
+        <NicknameInputContainer>
+            <NicknameInput nickname={nickname.get} setNickname={nickname.set} />
+        </NicknameInputContainer>
         {bowls.map(bowlGame => 
             <BowlSelectionContainer key={bowlGame.id}>
                 <BowlSelection

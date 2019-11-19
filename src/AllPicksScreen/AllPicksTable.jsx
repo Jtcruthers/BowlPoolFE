@@ -5,7 +5,7 @@ import PicksRow from './PicksRow';
 
 const StyledTable = styled.table`
     border-collapse: separate;
-    border-spacing: 0 2em;
+    border-spacing: 1rem 2em;
     margin: 0 auto;
 `;
 
