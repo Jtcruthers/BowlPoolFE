@@ -24,6 +24,7 @@ const SelectionScreenContainer = ({history}) => {
     const [bowls, setBowls] = useState([]);
     const [selections, setSelections] = useState({});
     const [nickname, setNickname] = useState('');
+    const alert = useAlert();
 
     useEffect(() => {
         mockAPICall().then(bowls => {
@@ -33,8 +34,6 @@ const SelectionScreenContainer = ({history}) => {
             setSelections(selections);
         });
     }, []);
-
-    const alert = useAlert();
 
     const pickTeam = (bowlGameID) => {
         return team => {
@@ -53,7 +52,7 @@ const SelectionScreenContainer = ({history}) => {
             try {
                 const bowlPicks = buildBowlPicks(selections, nickname);
                 await savePicksApi(bowlPicks);
-                history.push('/picks');
+                history.push('/');
             } catch {
                 alert.error('Couldn\'t save picks')
             }

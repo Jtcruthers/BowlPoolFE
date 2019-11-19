@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {withRouter} from 'react-router-dom';
 
 import bowlApiCall from './bowlgames_apicall';
 
@@ -16,7 +17,7 @@ const getPicksForGame = (id, bowlPicks) => {
     return bowlPicks.map(person => person.picks).map(picks => picks[id]);
 }
 
-const AllPicksScreenLogic = () => {
+const AllPicksScreenLogic = ({history}) => {
     const [bowls, setBowls] = useState([]);
     const [picks, setPicks] = useState([]);
     const [picksPerBowl, setPicksPerBowl] = useState({});
@@ -31,10 +32,19 @@ const AllPicksScreenLogic = () => {
         })
     }, []);
 
+    const redirectToSelection = () => history.push('/selection');
+
     if (!bowls.length || !picks.length) {
         return <p>LOADING</p>;
     }
-    return <AllPicksScreen bowls={bowls} picks={picks} picksPerBowl={picksPerBowl} />
+    return (
+        <AllPicksScreen
+            bowls={bowls}
+            picks={picks}
+            picksPerBowl={picksPerBowl}
+            redirectToSelection={redirectToSelection} 
+        />
+    )
 }
 
-export default AllPicksScreenLogic;
+export default withRouter(AllPicksScreenLogic);

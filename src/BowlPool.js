@@ -9,10 +9,10 @@ function App() {
   return (
     <div className="BowlPool">
       <Switch>
-        <Route path="/" exact>
+        <Route path="/selection">
           <SelectionScreen />
         </Route>
-        <Route path="/picks">
+        <Route path="/" exact>
           <AllPicksScreen />
         </Route>
       </Switch>
