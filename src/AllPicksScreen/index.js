@@ -1,20 +1,14 @@
 import React, {useEffect, useState} from 'react';
 
-import picksApiCall from './picks_apicall';
 import bowlApiCall from './bowlgames_apicall';
 
 import AllPicksScreen from './AllPicksScreen.jsx'
+import {getPicks} from '../api';
 
 
 const mockBowlCall = () => {
     return new Promise((resolve) => {
         setTimeout(() => {resolve(bowlApiCall)}, 150);
-    });
-}
-
-const mockPicksCall = () => {
-    return new Promise((resolve) => {
-        setTimeout(() => {resolve(picksApiCall)}, 0);
     });
 }
 
@@ -28,8 +22,9 @@ const AllPicksScreenLogic = () => {
     const [picksPerBowl, setPicksPerBowl] = useState({});
 
     useEffect(() => {
-        Promise.all([mockBowlCall(), mockPicksCall()]).then(([bowls, picks]) => {
+        Promise.all([mockBowlCall(), getPicks()]).then(([bowls, picks]) => {
             const picksPerBowl = {};
+            console.log(picks);
             bowls.map(bowl => bowl.id).forEach(id => picksPerBowl[id] = getPicksForGame(id, picks));
             setPicksPerBowl(picksPerBowl);
             setBowls(bowls);

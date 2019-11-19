@@ -13,5 +13,6 @@ export const savePicks = async picks => {
 }
 
 export const getPicks = async () => {
-    return await instance.get('get-picks');
+    const response = await instance.get('get-picks');
+    return response.data;
 }
