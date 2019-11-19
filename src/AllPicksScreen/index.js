@@ -1,17 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {withRouter} from 'react-router-dom';
 
-import bowlApiCall from './bowlgames_apicall';
-
 import AllPicksScreen from './AllPicksScreen.jsx'
-import {getPicks} from '../api';
+import {getPicks, getBowlGames} from '../services';
 
-
-const mockBowlCall = () => {
-    return new Promise((resolve) => {
-        setTimeout(() => {resolve(bowlApiCall)}, 150);
-    });
-}
 
 const getPicksForGame = (id, bowlPicks) => {
     return bowlPicks.map(person => person.picks).map(picks => picks[id]);
@@ -23,7 +15,8 @@ const AllPicksScreenLogic = ({history}) => {
     const [picksPerBowl, setPicksPerBowl] = useState({});
 
     useEffect(() => {
-        Promise.all([mockBowlCall(), getPicks()]).then(([bowls, picks]) => {
+        const bowls = getBowlGames();
+        getPicks().then(picks => {
             const picksPerBowl = {};
             bowls.map(bowl => bowl.id).forEach(id => picksPerBowl[id] = getPicksForGame(id, picks));
             setPicksPerBowl(picksPerBowl);

@@ -3,15 +3,7 @@ import {withRouter} from 'react-router-dom';
 import {useAlert} from 'react-alert';
 
 import SelectionScreen from './SelectionScreen';
-import {savePicks as savePicksApi} from '../api';
-
-import apiCall from './apicall';
-
-const mockAPICall = () => {
-    return new Promise((resolve) => {
-        setTimeout(() => {resolve(apiCall)}, 0);
-    });
-}
+import {getBowlGames, savePicks as savePicksApi} from '../services/';
 
 const buildBowlPicks = (selections, nickname) => {
     return {
@@ -27,12 +19,11 @@ const SelectionScreenContainer = ({history}) => {
     const alert = useAlert();
 
     useEffect(() => {
-        mockAPICall().then(bowls => {
-            const selections = {};
-            bowls.map(bowl => bowl.id).forEach(id => selections[id] = null);
-            setBowls(bowls);
-            setSelections(selections);
-        });
+        const bowls = getBowlGames();
+        const selections = {};
+        bowls.map(bowl => bowl.id).forEach(id => selections[id] = null);
+        setBowls(bowls);
+        setSelections(selections);
     }, []);
 
     const pickTeam = (bowlGameID) => {
