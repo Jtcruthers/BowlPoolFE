@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
+import {withRouter} from 'react-router-dom';
 import {useAlert} from 'react-alert';
 
 import SelectionScreen from './SelectionScreen';
+import {savePicks as savePicksApi} from '../api';
 
 import apiCall from './apicall';
 
@@ -11,7 +13,14 @@ const mockAPICall = () => {
     });
 }
 
-const SelectionScreenContainer = () => {
+const buildBowlPicks = (selections) => {
+    return {
+        name: "Test",
+        picks: selections
+    }
+}
+
+const SelectionScreenContainer = ({history}) => {
     const [bowls, setBowls] = useState([]);
     const [selections, setSelections] = useState({});
 
@@ -35,26 +44,29 @@ const SelectionScreenContainer = () => {
         }
     };
 
-    const savePicks = (event) => {
-        const allTeamsPicked = !Object.keys(selections).some(id => selections[id] === null);
-        console.log(allTeamsPicked);
+    const savePicks = async () => {
+        const allTeamsPicked = !bowls.map(bowl => bowl.id).some(id => selections[id] === null);
         if (!allTeamsPicked) {
-            event.preventDefault();
             alert.error('You are missing teams');
         } else {
-            //Make api call to save picks and if fails, prevent default
-            alert.success('Saved Picks');
+            try {
+                const bowlPicks = buildBowlPicks(selections);
+                await savePicksApi(bowlPicks);
+                history.push('/picks');
+            } catch {
+                alert.error('Couldn\'t save picks')
+            }
         }
     }
 
     return (
         <SelectionScreen
-            bowls={bowls}
-            selections={selections}
-            pickTeam={pickTeam}
-            onSave={savePicks}
+                bowls={bowls}
+                selections={selections}
+                pickTeam={pickTeam}
+                onSave={savePicks}
         />
     )
 }
 
-export default SelectionScreenContainer;
+export default withRouter(SelectionScreenContainer);

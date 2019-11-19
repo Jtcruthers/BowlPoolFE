@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from "react-router-dom";
 import styled from 'styled-components';
 
 import BowlSelection from './BowlSelection';
@@ -22,9 +21,7 @@ const SelectionScreen = ({bowls, selections, pickTeam, onSave}) => (
                 />
             </BowlSelectionContainer>
         )}
-        <Link to="/picks" onClick={event => onSave(event)}>
-            <StyledButton>Submit</StyledButton>
-        </Link>
+        <StyledButton onClick={onSave}>Submit</StyledButton>
     </div>
 )
 
