@@ -13,9 +13,9 @@ const mockAPICall = () => {
     });
 }
 
-const buildBowlPicks = (selections) => {
+const buildBowlPicks = (selections, nickname) => {
     return {
-        name: "Test",
+        name: nickname,
         picks: selections
     }
 }
@@ -23,6 +23,7 @@ const buildBowlPicks = (selections) => {
 const SelectionScreenContainer = ({history}) => {
     const [bowls, setBowls] = useState([]);
     const [selections, setSelections] = useState({});
+    const [nickname, setNickname] = useState('');
 
     useEffect(() => {
         mockAPICall().then(bowls => {
@@ -50,7 +51,7 @@ const SelectionScreenContainer = ({history}) => {
             alert.error('You are missing teams');
         } else {
             try {
-                const bowlPicks = buildBowlPicks(selections);
+                const bowlPicks = buildBowlPicks(selections, nickname);
                 await savePicksApi(bowlPicks);
                 history.push('/picks');
             } catch {
@@ -63,6 +64,7 @@ const SelectionScreenContainer = ({history}) => {
         <SelectionScreen
                 bowls={bowls}
                 selections={selections}
+                nickname={{get: nickname, set: setNickname}}
                 pickTeam={pickTeam}
                 onSave={savePicks}
         />

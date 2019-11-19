@@ -24,7 +24,6 @@ const AllPicksScreenLogic = () => {
     useEffect(() => {
         Promise.all([mockBowlCall(), getPicks()]).then(([bowls, picks]) => {
             const picksPerBowl = {};
-            console.log(picks);
             bowls.map(bowl => bowl.id).forEach(id => picksPerBowl[id] = getPicksForGame(id, picks));
             setPicksPerBowl(picksPerBowl);
             setBowls(bowls);
