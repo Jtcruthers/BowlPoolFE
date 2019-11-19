@@ -18,6 +18,7 @@ const Pick = ({bowl, pick}) => {
 const StyledTable = styled.table`
     border-collapse: separate;
     border-spacing: 0 2em;
+    margin: 0 auto;
 `;
 
 const AllPicksTable = ({bowls, picks, picksPerBowl}) => (

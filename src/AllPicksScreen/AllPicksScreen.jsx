@@ -8,10 +8,16 @@ const AllPicksContainer = styled.div`
     text-align: center;
 `;
 
+const TableContainer = styled.div`
+    margin: 0 0 0 -5%;
+`;
+
 const AllPicksScreen = ({bowls, picks, picksPerBowl, redirectToSelection}) => (
     <AllPicksContainer>
         <h2>Everyone's picks</h2>
-        <AllPicksTable bowls={bowls} picks={picks} picksPerBowl={picksPerBowl} />
+        <TableContainer>
+            <AllPicksTable bowls={bowls} picks={picks} picksPerBowl={picksPerBowl} />
+        </TableContainer>
         <StyledButton onClick={redirectToSelection}>Make Your Picks</StyledButton>
     </AllPicksContainer>
 )
