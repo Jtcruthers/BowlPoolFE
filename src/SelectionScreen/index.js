@@ -39,6 +39,8 @@ const SelectionScreenContainer = ({history}) => {
         const allTeamsPicked = !bowls.map(bowl => bowl.id).some(id => selections[id] === null);
         if (!allTeamsPicked) {
             alert.error('You are missing teams');
+        } else if (!nickname) {
+            alert.error('No nickname set');
         } else {
             try {
                 const bowlPicks = buildBowlPicks(selections, nickname);
